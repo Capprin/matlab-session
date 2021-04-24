@@ -47,6 +47,9 @@ function session_load(session_path, name)
     if ~isfolder(fullfile(session_path, name))
         error(['Session ' name ' does not exist']);
     end
+    % reset path to initial state
+    path(pathdef)
+    addpath(fullfile(session_path))
     % load saved path
     path(fileread(fullfile(session_path, name, 'path')));
     % load into base workspace
